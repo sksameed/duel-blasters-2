@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,14 +11,9 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 10f;
     private bool isGrounded;
     private Animator anim;
-    
-
-    public Transform firePoint; // Position where bullets spawn
-    public GameObject bulletPrefab; // Bullet prefab reference
-    public float bulletSpeed = 10f;
-
-    public float attackRate = 0.5f;
-    private float nextAttackTime = 0f;
+    public GameObject snowBall;
+    public Transform throwPoint;
+    public KeyCode throwBall;
 
     private void Awake()
     {
@@ -42,27 +38,16 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
         }
         anim.SetBool("run",horizontalInput != 0);
-           if (Time.time >= nextAttackTime && Input.GetKey(KeyCode.Space))
-        {
-            Shoot();
-            nextAttackTime = Time.time + attackRate;
+
+        //throwing
+        if (Input.GetKeyDown(throwBall)){
+            Instantiate(snowBall,throwPoint.position,throwPoint.rotation);
+            anim.SetTrigger("throw");
         }
+        
     }
     //set animation
-    void Shoot()
-    {
-        // // Play attack animation
-        // anim.SetBool("Attack",);
-
-        // Instantiate bullet
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
-        // Get Rigidbody2D and set velocity based on player's facing direction
-        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-        float direction = transform.localScale.x > 0 ? 1f : -1f; // Check player's facing direction
-        bulletRb.velocity = new Vector2(bulletSpeed * direction, 0f);
-    }
-
+   
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))

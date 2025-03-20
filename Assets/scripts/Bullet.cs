@@ -1,26 +1,33 @@
 using System.Collections;
+
 using System.Collections.Generic;
+
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
-{
-    public int damage = 10;
-    public float lifetime = 3f; // Destroy bullet after 3 seconds
+public class SnowBall: MonoBehaviour {
 
-    void Start()
-    {
-        Destroy(gameObject, lifetime);
-    }
+public float ballSpeed ;
 
-    void OnTriggerEnter2D(Collider2D hitInfo)
-    {
-       
-        
+private Rigidbody2D theRD;
 
-        // Optional: Destroy if hitting walls
-        if (hitInfo.gameObject.CompareTag("Wall"))
-        {
-            Destroy(gameObject);
-        }
-    }
+public GameObject snowBalleffect;
+
+// Use this for initialization
+
+void Start () {
+
+theRD = GetComponent<Rigidbody2D>();
+
+// Update is called once per frame
+}
+void Update () {
+
+theRD.velocity = new Vector2(ballSpeed * transform.localScale.x,0);
+
+}
+void OnTriggerEnter2D (Collider2D other){
+    Instantiate(snowBalleffect,transform.position,transform.rotation);
+     Destroy(gameObject);
+}
+
 }
