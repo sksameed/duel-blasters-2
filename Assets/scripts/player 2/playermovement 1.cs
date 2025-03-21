@@ -42,6 +42,7 @@ public class PlayerMovement1 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
             isGrounded = true;
+        
     }
 
     public bool canAttack()
