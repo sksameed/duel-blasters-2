@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Projectile1 : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed;
     private float direction;
@@ -27,7 +27,12 @@ public class Projectile1 : MonoBehaviour
         hit = true;
         boxCollider.enabled = false;
         anim.SetTrigger("explode");
-        
+        if (collision.tag =="Player1"){
+              FindObjectOfType<GameManager>().hurt();
+         }
+         if (collision.tag =="Player2"){
+              FindObjectOfType<GameManager>().hurtb();
+         }
         // Delay deactivation to allow the animation to play
         Invoke("Deactivate", 0.5f);  
     }

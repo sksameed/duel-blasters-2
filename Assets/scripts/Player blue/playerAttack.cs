@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class NewBehaviourScript1 : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
     [SerializeField] private float attackCooldown;
     [SerializeField] private Transform firePoint;
@@ -20,7 +20,7 @@ public class NewBehaviourScript1 : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && cooldownTimer > attackCooldown && playerMovement.canAttack())
+        if (Input.GetKey(KeyCode.P) && cooldownTimer > attackCooldown && playerMovement.canAttack())
         {
             Attack();
         }
