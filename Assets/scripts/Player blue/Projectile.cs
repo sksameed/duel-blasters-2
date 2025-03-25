@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
-        anim = GetComponent<Animator>();
+        // anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
     {
         hit = true;
         boxCollider.enabled = false;
-        anim.SetTrigger("explode");
+        // anim.SetTrigger("explode");
         if (collision.tag =="Player1"){
               FindObjectOfType<GameManager>().hurt();
          }

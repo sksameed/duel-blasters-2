@@ -29,7 +29,7 @@ public class NewBehaviourScript1 : MonoBehaviour
 
     private void Attack()
     {
-        anim.SetTrigger("attack");
+        // anim.SetTrigger("attack");
         cooldownTimer1 = 0;
 
         // Use the next fireball in the array (cycling back to 0)

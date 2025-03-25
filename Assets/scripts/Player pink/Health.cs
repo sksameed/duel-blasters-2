@@ -13,8 +13,10 @@ public GameObject player2;
 public int P1Life;
 
 public int P2Life;
+public GameObject p1wins;
+public GameObject p2wins;
 
-public GameObject gameOver;
+
 public GameObject[] p1Sticks;
 public GameObject[] p2Sticks;
 
@@ -30,12 +32,12 @@ void Start () {
 
 if (P1Life <= 0){
      player1.SetActive (false);
-     gameOver.SetActive(true);
+     p2wins.SetActive(true);
 }
 
 if (P2Life <= 0){
     player2. SetActive (false);
-    gameOver.SetActive (true);
+    p1wins.SetActive (true);
 }
 }
 public void hurt(){
