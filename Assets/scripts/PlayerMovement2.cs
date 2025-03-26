@@ -7,6 +7,7 @@ public class PlayerMovement2 : MonoBehaviour
     private Rigidbody2D body;
     private bool isGrounded;
     private Animator anim;
+    public AudioSource jump;
 
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class PlayerMovement2 : MonoBehaviour
         {
             body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isGrounded = false;
+
         }
     }
 
@@ -42,6 +44,7 @@ public class PlayerMovement2 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
             isGrounded = true;
+            jump.Play();
     }
 
     public bool canAttack()

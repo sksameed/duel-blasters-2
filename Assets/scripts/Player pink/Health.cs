@@ -9,6 +9,7 @@ public class GameManager: MonoBehaviour {
 public GameObject player1;
 
 public GameObject player2;
+public AudioSource hurtSound;
 
 public int P1Life;
 
@@ -42,6 +43,7 @@ if (P2Life <= 0){
 }
 public void hurt(){
     P1Life -= 1;
+    hurtSound.Play();
     for(int i=0;i < p1Sticks.Length; i++)
     {
 
@@ -58,6 +60,7 @@ p1Sticks[i].SetActive (true);
 }
 public void hurtb(){
     P2Life -= 1;
+    hurtSound.Play();
     for(int i=0;i < p2Sticks.Length; i++)
     {
 

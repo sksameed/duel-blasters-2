@@ -7,6 +7,7 @@ public class PlayerMovement1 : MonoBehaviour
     private Rigidbody2D body;
     private bool isGrounded;
     private Animator anim;
+    
 
     private void Awake()
     {
