@@ -20,7 +20,7 @@ public class NewBehaviourScript1 : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.K) && cooldownTimer1 > attackCooldown && playerMovement.canAttack())
+        if (Input.GetKey(KeyCode.Q) && cooldownTimer1 > attackCooldown && playerMovement.canAttack())
         {
             Attack();
         }

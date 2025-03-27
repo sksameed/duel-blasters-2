@@ -17,9 +17,9 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         float moveX = 0f;
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
             moveX = -1f;
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.D))
             moveX = 1f;
 
         float horizontalInput = moveX;
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = new Vector2(moveX * speed, body.velocity.y);
         anim.SetBool("run", moveX != 0);
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.W) && isGrounded)
         {
             body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isGrounded = false;
